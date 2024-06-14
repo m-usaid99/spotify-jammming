@@ -4,7 +4,6 @@ import { appStyle, appBodyStyle } from '../../styles/AppStyles';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
-import testTracks from '../../data/testTracks';
 import { useState } from 'react';
 
 function App() {
@@ -12,6 +11,7 @@ function App() {
 
   const [playlistName, setPlaylistName] = useState('My Playlist');
   const [playlistTracks, setPlaylistTracks] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
 
 
   const addTrackToPlaylist = (track) => {
@@ -28,13 +28,16 @@ function App() {
     setPlaylistName(name);
   }
 
+  const handleSearch = (tracks) => {
+    setSearchResults(tracks);
+  }
 
   return (
     <div css={appStyle(theme)}>
       <h1>Spotify Jammming</h1>
-      <SearchBar />
+      <SearchBar onSearch={handleSearch} />
       <div css={appBodyStyle(theme)}>
-        <SearchResults tracks={testTracks} onAdd={addTrackToPlaylist}/>
+        <SearchResults tracks={searchResults} onAdd={addTrackToPlaylist}/>
         <Playlist 
           playlistName={playlistName}
           playlistTracks={playlistTracks}
