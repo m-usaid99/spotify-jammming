@@ -36,3 +36,23 @@ export const playlistNameInput = (theme) => css`
     border-bottom: 1px solid ${theme.colors.secondary};
   }
 `;
+
+export const playlistNameContainer = (theme) => css`
+  display: flex;
+  align-items: center;
+  margin-bottom: ${theme.spacing.medium};
+`;
+
+
+export const clearButton = (theme) => css`
+  background: none;
+  border: none;
+  color: ${theme.colors.gray};
+  font-size: ${theme.fontSize.medium};
+  cursor: pointer;
+  margin-left: ${theme.spacing.small};
+
+  &:hover {
+    color: ${theme.colors.secondary};
+  }
+`;
