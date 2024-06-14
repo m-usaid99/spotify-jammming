@@ -8,7 +8,7 @@ import {
   playlistNameContainer } from '../../styles/PlayListStyles';
 import TrackList from '../TrackList/TrackList';
 
-const Playlist = ({ playlistName, playlistTracks, onRemove, onNameChange }) => {
+const Playlist = ({ playlistName, playlistTracks, onRemove, onNameChange, onSave }) => {
   const theme = useTheme();
 
   const handleNameChange = (event) => {
@@ -31,7 +31,7 @@ const Playlist = ({ playlistName, playlistTracks, onRemove, onNameChange }) => {
         <button css={clearButton(theme)} onClick={handleClearName}>✖</button>
       </div>
       <TrackList tracks={playlistTracks} onRemove={onRemove} isRemoval={true}/>
-      <button css={saveButton(theme)}>Save to Spotify</button>
+      <button css={saveButton(theme)} onClick={onSave}>Save to Spotify</button>
     </div>
   );
 };
