@@ -6,31 +6,34 @@ export const loginBoxContentStyle = (theme) => css`
   flex-direction: column;
   align-items: center;
   color: ${theme.colors.textPrimary};
+  font-family: 'Overpass', sans-serif; /* Body font */
 `;
 
 export const loginButtonStyle = (theme) => css`
   padding: ${theme.spacing.small} ${theme.spacing.medium};
-  background-color: ${theme.colors.accent};
-  color: ${theme.colors.textPrimary};
+  background-color: ${theme.colors.primary};
+  color: ${theme.colors.surface};
   border: none;
   border-radius: ${theme.borderRadius.small};
   cursor: pointer;
   margin-top: ${theme.spacing.medium};
+  transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: ${theme.colors.primary};
+    background-color: ${theme.colors.accent};
   }
 `;
 
 export const logoutButtonStyle = (theme) => css`
   padding: ${theme.spacing.small} ${theme.spacing.medium};
-  background-color: ${theme.colors.accent};
-  color: ${theme.colors.textPrimary};
+  background-color: ${theme.colors.primary};
+  color: ${theme.colors.surface};
   border: none;
   border-radius: ${theme.borderRadius.small};
   cursor: pointer;
+  transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: ${theme.colors.primary};
+    background-color: ${theme.colors.accent};
   }
 `;

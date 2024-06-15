@@ -4,11 +4,11 @@ import { css } from '@emotion/react';
 export const appStyle = (theme) => css`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   padding: ${theme.spacing.large};
   background-color: ${theme.colors.background};
   color: ${theme.colors.textPrimary};
-  font-family: Arial, sans-serif;
+  font-family: 'Overpass', sans-serif; /* Body font */
 `;
 
 export const headerStyle = (theme) => css`
@@ -19,6 +19,8 @@ export const headerStyle = (theme) => css`
   h1 {
     font-size: ${theme.fontSize.large};
     color: ${theme.colors.primary};
+    font-family: 'Sansita', sans-serif; /* Heading font */
+    font-weight: 900;
   }
 `;
 

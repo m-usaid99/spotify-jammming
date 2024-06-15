@@ -1,13 +1,13 @@
 const theme = {
   colors: {
-    primary: '#1DB954', // Spotify green, you can adjust this if needed
-    secondary: '#1ED760', // Slightly lighter green for hover effects
-    background: '#121212', // Dark background for a modern look
-    surface: '#1E1E1E', // Surface color for cards and other elements
-    textPrimary: '#FFFFFF', // Primary text color
-    textSecondary: '#B3B3B3', // Secondary text color
-    accent: '#BB86FC', // Accent color for buttons and highlights
-    error: '#CF6679', // Error color
+    primary: '#FF6F61', // Bright coral
+    secondary: '#4A90E2', // Bright blue
+    background: '#F2F2F2', // Light grey background
+    surface: '#FFFFFF', // White for cards and surfaces
+    textPrimary: '#333333', // Dark grey for primary text
+    textSecondary: '#666666', // Medium grey for secondary text
+    accent: '#F7B731', // Bright yellow for accents
+    error: '#FF6347', // Red for errors
   },
   spacing: {
     small: '8px',
