@@ -2,9 +2,8 @@ const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
 const redirectUri = process.env.REACT_APP_REDIRECT_URI;
 const scopes = [
   'user-read-private',
-  'user-read-email',
   'playlist-modify-public',
-  'playlist-modify-private',
+  'playlist-modify-private'
 ];
 
 let accessToken;
@@ -58,19 +57,25 @@ const Spotify = {
       headers: {
         Authorization: `Bearer ${token}`
       }
-    }).then(response => response.json())
-      .then(jsonResponse => {
-        if (!jsonResponse.tracks) {
-          return [];
-        }
-        return jsonResponse.tracks.items.map(track => ({
-          id: track.id,
-          name: track.name,
-          artist: track.artists[0].name,
-          album: track.album.name,
-          uri: track.uri
-        }));
-      });
+    }).then(response => {
+      if (response.status === 403) {
+        localStorage.removeItem('spotify_access_token');
+        localStorage.removeItem('spotify_token_expiration');
+        throw new Error('Access forbidden: Please log in again.');
+      }
+      return response.json();
+    }).then(jsonResponse => {
+      if (!jsonResponse.tracks) {
+        return [];
+      }
+      return jsonResponse.tracks.items.map(track => ({
+        id: track.id,
+        name: track.name,
+        artist: track.artists[0].name,
+        album: track.album.name,
+        uri: track.uri
+      }));
+    });
   },
 
   savePlaylist(name, trackUris) {
