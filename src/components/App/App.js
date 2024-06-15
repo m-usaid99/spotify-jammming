@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTheme } from '@emotion/react';
 import { appStyle, appBodyStyle, overlayStyle, loginBoxStyle } from '../../styles/AppStyles';
 import SearchBar from '../SearchBar/SearchBar';
@@ -7,24 +7,32 @@ import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
 import Spotify from '../../Spotify';
 import Login from '../Login/Login';
-// login screen (button redirects to OAuth)
-// figure out uri situation 
 
 const App = () => {
   const theme = useTheme();
-  
-  // State for the playlist
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [playlistName, setPlaylistName] = useState('My Playlist');
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    const token = Spotify.getAccessToken();
-    if (token) {
-      setIsLoggedIn(true);
+    try {
+      const token = Spotify.getAccessToken();
+      if (token) {
+        setIsLoggedIn(true);
+      }
+    } catch (error) {
+      console.error('Error fetching token:', error);
+      localStorage.removeItem('spotify_access_token');
+      localStorage.removeItem('spotify_token_expiration');
     }
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('spotify_access_token');
+    localStorage.removeItem('spotify_token_expiration');
+    setIsLoggedIn(false);
+  };
 
   const addTrackToPlaylist = (track) => {
     if (!playlistTracks.some(savedTrack => savedTrack.id === track.id)) {
@@ -49,6 +57,8 @@ const App = () => {
     Spotify.savePlaylist(playlistName, trackUris).then(() => {
       setPlaylistName('New Playlist');
       setPlaylistTracks([]);
+    }).catch(error => {
+      console.error('Error saving playlist:', error);
     });
   };
 
@@ -62,6 +72,7 @@ const App = () => {
         </div>
       )}
       <h1>Spotify Jammming</h1>
+      <button onClick={handleLogout}>Log out</button>
       <SearchBar onSearch={handleSearch} />
       <div css={appBodyStyle(theme)}>
         <SearchResults tracks={searchResults} onAdd={addTrackToPlaylist} />
