@@ -10,7 +10,7 @@ import Spotify from '../../Spotify';
 import Login from '../Login/Login';
 
 
-// TODO: 1. make it response, add track preview feature. 
+// TODO: 1. make it response 2. add a README 3. add track preview feature. 
 
 
 const App = () => {
