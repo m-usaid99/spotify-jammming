@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { useTheme } from '@emotion/react';
-import { searchBarStyle, buttonStyle, inputStyle } from '../../styles/SearchBarStyles';
+import { searchBarStyle, inputStyle } from '../../styles/SearchBarStyles';
 import Spotify from '../../Spotify';
 import { useCallback, useEffect, useState } from 'react';
 import { debounce } from 'lodash';
@@ -15,6 +15,9 @@ const SearchBar = ({ onSearch }) => {
             if (searchTerm) {
                 const tracks = await Spotify.search(searchTerm);
                 onSearch(tracks);
+            }
+            else {
+                onSearch([]);
             }
         }, 300),
         []

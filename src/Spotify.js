@@ -52,20 +52,18 @@ const Spotify = {
     }
   },
 
-  search(term) {
+  async search(term) {
     const token = Spotify.getAccessToken();
-    return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).then(response => {
+    try {
+      const response = await fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       if (response.status === 403) {
-        localStorage.removeItem('spotify_access_token');
-        localStorage.removeItem('spotify_token_expiration');
         throw new Error('Access forbidden: Please log in again.');
       }
-      return response.json();
-    }).then(jsonResponse => {
+      const jsonResponse = await response.json();
       if (!jsonResponse.tracks) {
         return [];
       }
@@ -76,7 +74,10 @@ const Spotify = {
         album: track.album.name,
         uri: track.uri
       }));
-    });
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+      return [];
+    }
   },
 
   savePlaylist(name, trackUris) {
