@@ -12,6 +12,10 @@ let expiresIn;
 
 const Spotify = {
   getAccessToken() {
+    if (accessToken) {
+      return accessToken;
+    }
+
     const storedToken = localStorage.getItem('spotify_access_token');
     const storedExpiration = localStorage.getItem('spotify_token_expiration');
 

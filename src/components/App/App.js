@@ -7,6 +7,9 @@ import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
 import Spotify from '../../Spotify';
 
+// login screen (button redirects to OAuth)
+// figure out uri situation 
+
 const App = () => {
   const theme = useTheme();
   
