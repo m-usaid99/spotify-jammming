@@ -4,18 +4,24 @@ import { css } from '@emotion/react';
 export const playlistStyle = (theme) => css`
   flex: 1;
   padding: ${theme.spacing.medium};
+  background-color: ${theme.colors.surface};
+  border-radius: ${theme.borderRadius.medium};
+  color: ${theme.colors.textPrimary};
 `;
 
 export const saveButton = (theme) => css`
   margin-top: ${theme.spacing.small};
   padding: ${theme.spacing.small};
   background-color: ${theme.colors.primary};
-  color: ${theme.colors.white};
+  color: ${theme.colors.surface};
   border: none;
+  border-radius: ${theme.borderRadius.small};
   cursor: pointer;
+  font-size: ${theme.fontSize.medium};
+  transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: ${theme.colors.secondary};
+    background-color: ${theme.colors.accent};
   }
 `;
 
@@ -23,12 +29,13 @@ export const playlistNameInput = (theme) => css`
   width: 100%;
   padding: ${theme.spacing.small};
   font-size: ${theme.fontSize.large};
-  font-weight: bold;
+  font-family: Overpass;
+  font-weight: 900;
   border: none;
-  border-bottom: 1px solid ${theme.colors.gray};
+  border-bottom: 1px solid ${theme.colors.textSecondary};
   margin-bottom: ${theme.spacing.medium};
   background-color: transparent;
-  color: ${theme.colors.primary};
+  color: ${theme.colors.textPrimary};
   text-align: center;
 
   &:focus {
@@ -43,16 +50,15 @@ export const playlistNameContainer = (theme) => css`
   margin-bottom: ${theme.spacing.medium};
 `;
 
-
 export const clearButton = (theme) => css`
   background: none;
   border: none;
-  color: ${theme.colors.gray};
+  color: ${theme.colors.textSecondary};
   font-size: ${theme.fontSize.medium};
   cursor: pointer;
   margin-left: ${theme.spacing.small};
 
   &:hover {
-    color: ${theme.colors.secondary};
+    color: ${theme.colors.accent};
   }
 `;

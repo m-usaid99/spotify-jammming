@@ -1,13 +1,13 @@
 const theme = {
   colors: {
-    primary: '#FF6F61', // Bright coral
-    secondary: '#4A90E2', // Bright blue
-    background: '#F2F2F2', // Light grey background
-    surface: '#FFFFFF', // White for cards and surfaces
-    textPrimary: '#333333', // Dark grey for primary text
-    textSecondary: '#666666', // Medium grey for secondary text
-    accent: '#F7B731', // Bright yellow for accents
-    error: '#FF6347', // Red for errors
+    primary: '#1b1f3b', // Dark Blue
+    secondary: '#2d3a6b', // Slate Blue
+    background: '#121212', // Very Dark Grey
+    surface: '#1c1c1c', // Dark Surface
+    textPrimary: '#f0f0f0', // Lighter Grey for primary text
+    textSecondary: '#b0b0b0', // Light Grey for secondary text
+    accent: '#3c91e6', // Vivid Blue
+    error: '#ff4f4f', // Bright Red
   },
   spacing: {
     small: '8px',

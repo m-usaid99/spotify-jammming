@@ -1,16 +1,15 @@
 html, body, #root {
   height: 100%;
-  font-family: 'Overpass', Arial, sans-serif;
-  color: #333333;
+  margin: 0;
+  background-color: #121212; /* Very Dark Grey */
+  color: #f0f0f0; /* Light Grey text */
+  font-family: 'Overpass', Arial, sans-serif; /* Body font */
 }
 
 body {
   margin: 0;
-  display: flex;
-  justify-content: center;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #f2f2f2;
-  align-items: center
+  padding: 0;
+  box-sizing: border-box;
 }
+
 

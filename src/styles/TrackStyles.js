@@ -5,44 +5,44 @@ export const trackContainer = (theme) => css`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: ${theme.spacing.small} 0;
-  border-bottom: 1px solid ${theme.colors.gray};
+  padding: ${theme.spacing.small};
+  background-color: ${theme.colors.surface};
+  border-radius: ${theme.borderRadius.small};
+  margin-bottom: ${theme.spacing.small};
+  color: ${theme.colors.textPrimary};
 `;
 
 export const trackDetails = (theme) => css`
   display: flex;
   flex-direction: column;
-  flex: 1;
-  margin-left: ${theme.spacing.small};
 `;
 
 export const trackName = (theme) => css`
   font-size: ${theme.fontSize.medium};
-  font-weight: bold;
-  margin-bottom: ${theme.spacing.small};
+  color: ${theme.colors.textPrimary};
 `;
 
 export const trackArtist = (theme) => css`
   font-size: ${theme.fontSize.small};
-  color: ${theme.colors.gray};
+  color: ${theme.colors.textSecondary};
 `;
 
 export const trackAlbum = (theme) => css`
   font-size: ${theme.fontSize.small};
-  font-style: italic;
-  color: ${theme.colors.gray};
-  text-align: center;
-  flex: 1;
+  color: ${theme.colors.textSecondary};
 `;
 
 export const buttonStyle = (theme) => css`
-  padding: ${theme.spacing.small};
+  padding: ${theme.spacing.small} ${theme.spacing.medium};
   background-color: ${theme.colors.primary};
-  color: ${theme.colors.white};
+  color: ${theme.colors.surface};
   border: none;
+  border-radius: ${theme.borderRadius.small};
   cursor: pointer;
+  font-size: ${theme.fontSize.small};
+  transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: ${theme.colors.secondary};
+    background-color: ${theme.colors.accent};
   }
 `;

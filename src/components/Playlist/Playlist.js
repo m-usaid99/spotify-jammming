@@ -5,7 +5,8 @@ import {
   saveButton, 
   playlistNameInput, 
   clearButton, 
-  playlistNameContainer } from '../../styles/PlayListStyles';
+  playlistNameContainer 
+} from '../../styles/PlayListStyles';
 import TrackList from '../TrackList/TrackList';
 
 const Playlist = ({ playlistName, playlistTracks, onRemove, onNameChange, onSave }) => {
@@ -27,7 +28,7 @@ const Playlist = ({ playlistName, playlistTracks, onRemove, onNameChange, onSave
           value={playlistName}
           onChange={handleNameChange}
           placeholder='Enter Playlist Name'
-          />
+        />
         <button css={clearButton(theme)} onClick={handleClearName}>✖</button>
       </div>
       <TrackList tracks={playlistTracks} onRemove={onRemove} isRemoval={true}/>

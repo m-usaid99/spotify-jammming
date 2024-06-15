@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 export const appStyle = (theme) => css`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  align-items: center;
   padding: ${theme.spacing.large};
   background-color: ${theme.colors.background};
   color: ${theme.colors.textPrimary};
@@ -16,8 +16,10 @@ export const headerStyle = (theme) => css`
   justify-content: space-between;
   align-items: center;
   margin-bottom: ${theme.spacing.large};
+  width: 100%;
+  max-width: 1200px;
   h1 {
-    font-size: ${theme.fontSize.large};
+    font-size: 48px;
     color: ${theme.colors.primary};
     font-family: 'Sansita', sans-serif; /* Heading font */
     font-weight: 900;
@@ -26,8 +28,10 @@ export const headerStyle = (theme) => css`
 
 export const appBodyStyle = (theme) => css`
   display: flex;
-  flex: 1;
-  gap: ${theme.spacing.medium};
+  justify-content: space-between;
+  gap: ${theme.spacing.large};
+  width: 100%;
+  max-width: 1200px;
 `;
 
 export const overlayStyle = (theme) => css`
