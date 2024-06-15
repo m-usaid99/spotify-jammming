@@ -9,6 +9,13 @@ export const appStyle = (theme) => css`
     font-family: Arial, sans-serif;
 `;  
 
+export const headerStyle = (theme) => css`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: ${theme.spacing.large};
+`;
+
 export const appBodyStyle = (theme) => css`
     display: flex;
     flex: 1;
@@ -33,4 +40,19 @@ export const loginBoxStyle = (theme) => css`
   border-radius: ${theme.borderRadius.medium};
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   text-align: center;
+`;
+
+export const logoutButtonStyle = (theme) => css`
+  padding: ${theme.spacing.small} ${theme.spacing.medium};
+  background-color: ${theme.colors.primary};
+  color: white;
+  border: none;
+  border-radius: ${theme.borderRadius.small};
+  cursor: pointer;
+  top: ${theme.spacing.small};
+  right: ${theme.spacing.small};
+
+  &:hover {
+    background-color: ${theme.colors.secondary};
+  }
 `;
