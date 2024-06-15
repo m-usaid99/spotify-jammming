@@ -35,11 +35,12 @@ export const trackAlbum = (theme) => css`
 export const buttonStyle = (theme) => css`
   padding: ${theme.spacing.small} ${theme.spacing.medium};
   background-color: ${theme.colors.primary};
-  color: ${theme.colors.surface};
+  color: ${theme.colors.textPrimary}; /* Light color for contrast */
   border: none;
   border-radius: ${theme.borderRadius.small};
   cursor: pointer;
   font-size: ${theme.fontSize.small};
+  font-family: 'Overpass', sans-serif; /* Ensure the button text uses Overpass */
   transition: background-color 0.3s ease;
 
   &:hover {

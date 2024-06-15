@@ -32,6 +32,7 @@ export const appBodyStyle = (theme) => css`
   gap: ${theme.spacing.large};
   width: 100%;
   max-width: 1200px;
+  padding-top: ${theme.spacing.large};
 `;
 
 export const overlayStyle = (theme) => css`
@@ -63,4 +64,20 @@ export const loadingBoxStyle = (theme) => css`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   text-align: center;
   color: ${theme.colors.textPrimary};
+`;
+
+export const buttonStyle = (theme) => css`
+  padding: ${theme.spacing.small} ${theme.spacing.medium};
+  background-color: ${theme.colors.primary};
+  color: ${theme.colors.textPrimary}; /* Light color for contrast */
+  border: none;
+  border-radius: ${theme.borderRadius.small};
+  cursor: pointer;
+  font-size: ${theme.fontSize.medium};
+  font-family: 'Overpass', sans-serif; /* Ensure the button text uses Overpass */
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: ${theme.colors.accent};
+  }
 `;

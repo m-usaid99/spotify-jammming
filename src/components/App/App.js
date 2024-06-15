@@ -9,6 +9,10 @@ import Playlist from '../Playlist/Playlist';
 import Spotify from '../../Spotify';
 import Login from '../Login/Login';
 
+
+// TODO: 1. make it response, add track preview feature. 
+
+
 const App = () => {
   const theme = useTheme();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -84,7 +88,7 @@ const App = () => {
         </div>
       )}
       <div css={headerStyle(theme)}>
-        <h1>Spotify Jammming</h1>
+        <h1>Jammming</h1>
         {isLoggedIn && (
           <button css={logoutButtonStyle(theme)} onClick={handleLogout}>Log out</button>
         )}

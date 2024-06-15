@@ -13,11 +13,12 @@ export const saveButton = (theme) => css`
   margin-top: ${theme.spacing.small};
   padding: ${theme.spacing.small};
   background-color: ${theme.colors.primary};
-  color: ${theme.colors.surface};
+  color: ${theme.colors.textPrimary}; /* Light color for contrast */
   border: none;
   border-radius: ${theme.borderRadius.small};
   cursor: pointer;
   font-size: ${theme.fontSize.medium};
+  font-family: 'Overpass', sans-serif; /* Ensure the button text uses Overpass */
   transition: background-color 0.3s ease;
 
   &:hover {
@@ -28,9 +29,9 @@ export const saveButton = (theme) => css`
 export const playlistNameInput = (theme) => css`
   width: 100%;
   padding: ${theme.spacing.small};
-  font-size: ${theme.fontSize.large};
+  font-size: ${theme.fontSize.medium};
+  font-weight: bold;
   font-family: Overpass;
-  font-weight: 900;
   border: none;
   border-bottom: 1px solid ${theme.colors.textSecondary};
   margin-bottom: ${theme.spacing.medium};
