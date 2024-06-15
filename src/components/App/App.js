@@ -1,12 +1,12 @@
 /** @jsxImportSource @emotion/react */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTheme } from '@emotion/react';
-import { appStyle, appBodyStyle } from '../../styles/AppStyles';
+import { appStyle, appBodyStyle, overlayStyle, loginBoxStyle } from '../../styles/AppStyles';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
 import Spotify from '../../Spotify';
-
+import Login from '../Login/Login';
 // login screen (button redirects to OAuth)
 // figure out uri situation 
 
@@ -14,9 +14,17 @@ const App = () => {
   const theme = useTheme();
   
   // State for the playlist
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [playlistName, setPlaylistName] = useState('My Playlist');
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
+
+  useEffect(() => {
+    const token = Spotify.getAccessToken();
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   const addTrackToPlaylist = (track) => {
     if (!playlistTracks.some(savedTrack => savedTrack.id === track.id)) {
@@ -46,6 +54,13 @@ const App = () => {
 
   return (
     <div css={appStyle(theme)}>
+      {!isLoggedIn && (
+        <div css={overlayStyle(theme)}>
+          <div css={loginBoxStyle(theme)}>
+            <Login onLogin={() => setIsLoggedIn(true)} />
+          </div>
+        </div>
+      )}
       <h1>Spotify Jammming</h1>
       <SearchBar onSearch={handleSearch} />
       <div css={appBodyStyle(theme)}>
