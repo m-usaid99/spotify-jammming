@@ -2,23 +2,30 @@
 import { css } from '@emotion/react';
 
 export const appStyle = (theme) => css`
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    padding: ${theme.spacing.large};
-    font-family: Arial, sans-serif;
-`;  
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: ${theme.spacing.large};
+  background-color: ${theme.colors.background};
+  color: ${theme.colors.textPrimary};
+  font-family: Arial, sans-serif;
+`;
 
 export const headerStyle = (theme) => css`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: ${theme.spacing.large};
+  h1 {
+    font-size: ${theme.fontSize.large};
+    color: ${theme.colors.primary};
+  }
 `;
 
 export const appBodyStyle = (theme) => css`
-    display: flex;
-    flex: 1;
+  display: flex;
+  flex: 1;
+  gap: ${theme.spacing.medium};
 `;
 
 export const overlayStyle = (theme) => css`
@@ -27,7 +34,7 @@ export const overlayStyle = (theme) => css`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,24 +42,19 @@ export const overlayStyle = (theme) => css`
 `;
 
 export const loginBoxStyle = (theme) => css`
-  background-color: white;
+  background-color: ${theme.colors.surface};
   padding: ${theme.spacing.large};
   border-radius: ${theme.borderRadius.medium};
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   text-align: center;
+  color: ${theme.colors.textPrimary};
 `;
 
-export const logoutButtonStyle = (theme) => css`
-  padding: ${theme.spacing.small} ${theme.spacing.medium};
-  background-color: ${theme.colors.primary};
-  color: white;
-  border: none;
-  border-radius: ${theme.borderRadius.small};
-  cursor: pointer;
-  top: ${theme.spacing.small};
-  right: ${theme.spacing.small};
-
-  &:hover {
-    background-color: ${theme.colors.secondary};
-  }
+export const loadingBoxStyle = (theme) => css`
+  background-color: ${theme.colors.surface};
+  padding: ${theme.spacing.large};
+  border-radius: ${theme.borderRadius.medium};
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  color: ${theme.colors.textPrimary};
 `;

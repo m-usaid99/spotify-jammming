@@ -1,7 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { useState, useEffect } from 'react';
 import { useTheme } from '@emotion/react';
-import { appStyle, appBodyStyle, overlayStyle, loginBoxStyle, logoutButtonStyle, headerStyle } from '../../styles/AppStyles';
+import { appStyle, appBodyStyle, overlayStyle, loginBoxStyle, headerStyle, loadingBoxStyle } from '../../styles/AppStyles';
+import { logoutButtonStyle } from '../../styles/LoginStyles';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
@@ -14,6 +15,7 @@ const App = () => {
   const [playlistName, setPlaylistName] = useState('My Playlist');
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     try {
@@ -53,12 +55,15 @@ const App = () => {
   };
 
   const savePlaylist = () => {
+    setIsLoading(true);
     const trackUris = playlistTracks.map(track => track.uri);
     Spotify.savePlaylist(playlistName, trackUris).then(() => {
       setPlaylistName('New Playlist');
       setPlaylistTracks([]);
     }).catch(error => {
       console.error('Error saving playlist:', error);
+    }).finally(() => {
+      setIsLoading(false);
     });
   };
 
@@ -71,9 +76,18 @@ const App = () => {
           </div>
         </div>
       )}
+      {isLoading && (
+        <div css={overlayStyle(theme)}>
+          <div css={loadingBoxStyle(theme)}>
+            <p>Loading...</p>
+          </div>
+        </div>
+      )}
       <div css={headerStyle(theme)}>
         <h1>Spotify Jammming</h1>
-        <button css={logoutButtonStyle(theme)} onClick={handleLogout}>Log out</button>
+        {isLoggedIn && (
+          <button css={logoutButtonStyle(theme)} onClick={handleLogout}>Log out</button>
+        )}
       </div>
       <SearchBar onSearch={handleSearch} />
       <div css={appBodyStyle(theme)}>

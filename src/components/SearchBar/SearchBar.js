@@ -1,34 +1,43 @@
 /** @jsxImportSource @emotion/react */
 import { useTheme } from '@emotion/react';
-import { searchBarContainer, searchInput, searchButton } from '../../styles/SearchBarStyles';
+import { searchBarStyle, buttonStyle, inputStyle } from '../../styles/SearchBarStyles';
 import Spotify from '../../Spotify';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { debounce } from 'lodash';
 
 const SearchBar = ({ onSearch }) => {
     const theme = useTheme();
 
     const [term, setTerm] = useState('');
 
-    const handleTermChange = (event) => {
-        setTerm(event.target.value);
-    };
+    const handleSearch = useCallback(
+        debounce(async (searchTerm) => {
+            if (searchTerm) {
+                const tracks = await Spotify.search(searchTerm);
+                onSearch(tracks);
+            }
+        }, 300),
+        []
+    );
 
-    const search = () => {
-        Spotify.search(term).then(tracks => {
-            onSearch(tracks);
-        });
-    };
+    useEffect(() => {
+        handleSearch(term);
+    }, [term, handleSearch]);
 
+    const handleChange = (e) => {
+        setTerm(e.target.value);
+    }
+    
     return (
-        <div css={searchBarContainer(theme)}>
+        <div css={searchBarStyle}>
             <input 
-                css={searchInput(theme)} 
+                css={inputStyle(theme)} 
                 type='text' 
                 placeholder='Search for a song!' 
                 value={term}
-                onChange={handleTermChange}
+                onChange={handleChange}
             />
-            <button css={searchButton(theme)} onClick={search}>Search</button>
+            {/* <button css={buttonStyle(theme)} onClick={search}>Search</button> */}
         </div>
     );
 };
