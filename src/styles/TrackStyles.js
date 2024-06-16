@@ -59,3 +59,7 @@ export const buttonStyle = (theme) => css`
     background-color: ${theme.colors.accent};
   }
 `;
+
+export const audioStyle = (theme) => css`
+  display: none; /* Hide the audio element */
+`;
