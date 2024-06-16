@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { useState, useEffect } from 'react';
 import { useTheme } from '@emotion/react';
-import { appStyle, appBodyStyle, overlayStyle, loginBoxStyle, headerStyle, loadingBoxStyle } from '../../styles/AppStyles';
+import { appStyle, appBodyStyle, overlayStyle, loginBoxStyle, headerStyle, loadingBoxStyle} from '../../styles/AppStyles';
 import { logoutButtonStyle } from '../../styles/LoginStyles';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
@@ -9,16 +9,13 @@ import Playlist from '../Playlist/Playlist';
 import Spotify from '../../Spotify';
 import Login from '../Login/Login';
 
-
-// TODO: 1. make it response 2. add a README 3. add track preview feature. 
-
-
 const App = () => {
   const theme = useTheme();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [playlistName, setPlaylistName] = useState('My Playlist');
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
+  const [originalSearchResults, setOriginalSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -43,11 +40,17 @@ const App = () => {
   const addTrackToPlaylist = (track) => {
     if (!playlistTracks.some(savedTrack => savedTrack.id === track.id)) {
       setPlaylistTracks([...playlistTracks, track]);
+      setSearchResults(searchResults.filter(resultTrack => resultTrack.id !== track.id));
     }
   };
 
   const removeTrackFromPlaylist = (track) => {
     setPlaylistTracks(playlistTracks.filter(savedTrack => savedTrack.id !== track.id));
+    const updatedSearchResults = [...searchResults, track];
+    updatedSearchResults.sort((a, b) => {
+      return originalSearchResults.findIndex(t => t.id === a.id) - originalSearchResults.findIndex(t => t.id === b.id);
+    });
+    setSearchResults(updatedSearchResults);
   };
 
   const updatePlaylistName = (name) => {
@@ -55,7 +58,9 @@ const App = () => {
   };
 
   const handleSearch = (tracks) => {
-    setSearchResults(tracks);
+    setOriginalSearchResults(tracks);
+    const filteredTracks = tracks.filter(track => !playlistTracks.some(savedTrack => savedTrack.id === track.id));
+    setSearchResults(filteredTracks);
   };
 
   const savePlaylist = () => {
