@@ -47,7 +47,7 @@ export const trackAlbum = (theme) => css`
 export const buttonStyle = (theme) => css`
   padding: ${theme.spacing.small} ${theme.spacing.medium};
   background-color: ${theme.colors.primary};
-  color: ${theme.colors.surface};
+  color: ${theme.colors.textPrimary};
   border: none;
   border-radius: ${theme.borderRadius.small};
   cursor: pointer;
