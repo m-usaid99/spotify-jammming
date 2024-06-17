@@ -9,6 +9,11 @@ export const trackContainer = (theme) => css`
   border-radius: ${theme.borderRadius.small};
   margin-bottom: ${theme.spacing.small};
   color: ${theme.colors.textPrimary};
+
+  @media (max-width: 600px) {
+    flex-direction: column; /* Stack elements vertically on small screens */
+    align-items: center;
+  }
 `;
 
 export const albumArtStyle = (theme) => css`
@@ -24,6 +29,13 @@ export const trackDetails = (theme) => css`
   flex-direction: column;
   flex-grow: 1;
   justify-content: center; /* Center the text vertically */
+
+  @media (max-width: 600px) {
+    align-items: center; /* Center text on small screens */
+    text-align: center;
+    margin-right: 0;
+    margin-bottom: ${theme.spacing.medium}; /* Add margin below for spacing */
+  }
 `;
 
 export const trackName = (theme) => css`
@@ -44,6 +56,11 @@ export const trackAlbum = (theme) => css`
   margin-right: auto; /* Ensure there's space between album name and button */
 `;
 
+export const buttonContainer = (theme) => css`
+  display: flex;
+  justify-content: center;
+`;
+
 export const buttonStyle = (theme) => css`
   padding: ${theme.spacing.small} ${theme.spacing.medium};
   background-color: ${theme.colors.primary};
@@ -57,6 +74,10 @@ export const buttonStyle = (theme) => css`
 
   &:hover {
     background-color: ${theme.colors.accent};
+  }
+
+  @media (max-width: 600px) {
+  font-size: ${theme.fontSize.small}; /* Ensure font size is small on mobile */
   }
 `;
 

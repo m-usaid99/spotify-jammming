@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { useTheme } from '@emotion/react';
 import { useState } from 'react';
-import { buttonStyle, trackArtist, trackAlbum, trackContainer, trackDetails, trackName, albumArtStyle, audioStyle } from '../../styles/TrackStyles';
+import { buttonStyle, trackArtist, trackAlbum, trackContainer, trackDetails, trackName, albumArtStyle, audioStyle, buttonContainer } from '../../styles/TrackStyles';
 
 const Track = ({ track, onAdd, onRemove, isRemoval }) => {
   const theme = useTheme();
@@ -35,6 +35,7 @@ const Track = ({ track, onAdd, onRemove, isRemoval }) => {
           <span css={trackAlbum(theme)}>{track.album}</span>
         </div>
       </div>
+      <div css={buttonContainer(theme)}>
       <audio id={`audio-${track.id}`} css={audioStyle(theme)} src={track.previewUrl}></audio>
       <button css={buttonStyle(theme)} onClick={togglePlay}>
         {isPlaying ? 'Pause' : 'Play'}
@@ -44,6 +45,7 @@ const Track = ({ track, onAdd, onRemove, isRemoval }) => {
       ) : (
         <button css={buttonStyle(theme)} onClick={handleAdd}>Add</button>
       )}
+    </div>
     </li>
   );
 };

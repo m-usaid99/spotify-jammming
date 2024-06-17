@@ -7,6 +7,14 @@ export const playlistStyle = (theme) => css`
   background-color: ${theme.colors.surface};
   border-radius: ${theme.borderRadius.medium};
   color: ${theme.colors.textPrimary};
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 120vh; /* Limit the height */
+
+
+  @media (max-width: 768px) {
+    max-height: 40vh; /* Adjust height for mobile */
+    width: 85%;
+  }
 `;
 
 export const saveButton = (theme) => css`
