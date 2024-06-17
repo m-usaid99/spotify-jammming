@@ -8,21 +8,60 @@ export const appStyle = (theme) => css`
   padding: ${theme.spacing.large};
   background-color: ${theme.colors.background};
   color: ${theme.colors.textPrimary};
-  font-family: 'Overpass', sans-serif; /* Body font */
+  font-family: 'Overpass', sans-serif;
+
+  @media (max-width: 768px) {
+    padding: ${theme.spacing.medium};
+  }
+
+  @media (max-width: 480px) {
+    padding: ${theme.spacing.small};
+  }
 `;
 
 export const headerStyle = (theme) => css`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: ${theme.spacing.large};
   width: 100%;
   max-width: 1200px;
+  padding: 25px;
+  margin-bottom: ${theme.spacing.large};
+
   h1 {
-    font-size: 48px;
+    font-size: 36px;
     color: ${theme.colors.primary};
-    font-family: 'Sansita', sans-serif; /* Heading font */
+    font-family: 'Sansita', sans-serif;
     font-weight: 900;
+    margin: 0;
+  }
+
+  button {
+    background-color: ${theme.colors.primary};
+    color: ${theme.colors.textPrimary}; /* Updated to use textPrimary */
+    border: none;
+    border-radius: ${theme.borderRadius.small};
+    cursor: pointer;
+    font-size: ${theme.fontSize.small}; /* Adjusted size */
+    font-family: 'Overpass', sans-serif;
+    padding: ${theme.spacing.small} ${theme.spacing.medium}; /* Adjusted padding */
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: ${theme.colors.accent};
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 90%; 
+  
+    h1 {
+      font-size: 28px; /* Adjusted size */
+    }
+
+    button {
+      font-size: ${theme.fontSize.small}; /* Ensure button text size adjusts */
+    }
   }
 `;
 
@@ -33,6 +72,11 @@ export const appBodyStyle = (theme) => css`
   width: 100%;
   max-width: 1200px;
   padding-top: ${theme.spacing.large};
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const overlayStyle = (theme) => css`
@@ -55,6 +99,10 @@ export const loginBoxStyle = (theme) => css`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   text-align: center;
   color: ${theme.colors.textPrimary};
+
+  @media (max-width: 480px) {
+    padding: ${theme.spacing.medium};
+  }
 `;
 
 export const loadingBoxStyle = (theme) => css`
@@ -66,15 +114,15 @@ export const loadingBoxStyle = (theme) => css`
   color: ${theme.colors.textPrimary};
 `;
 
-export const buttonStyle = (theme) => css`
+export const logoutButtonStyle = (theme) => css`
   padding: ${theme.spacing.small} ${theme.spacing.medium};
   background-color: ${theme.colors.primary};
-  color: ${theme.colors.textPrimary}; /* Light color for contrast */
+  color: ${theme.colors.textPrimary};
   border: none;
   border-radius: ${theme.borderRadius.small};
   cursor: pointer;
-  font-size: ${theme.fontSize.medium};
-  font-family: 'Overpass', sans-serif; /* Ensure the button text uses Overpass */
+  font-size: ${theme.fontSize.small};
+  font-family: 'Overpass', sans-serif;
   transition: background-color 0.3s ease;
 
   &:hover {

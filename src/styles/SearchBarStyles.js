@@ -24,19 +24,3 @@ export const inputStyle = (theme) => css`
   }
 `;
 
-export const buttonStyle = (theme) => css`
-  padding: 10px 20px;
-  margin-left: 10px;
-  background-color: ${theme.colors.primary};
-  color: ${theme.colors.surface};
-  border: none;
-  border-radius: ${theme.borderRadius.small};
-  cursor: pointer;
-  font-size: ${theme.fontSize.medium};
-  transition: background-color 0.3s ease;
-  font-family: 'Overpass', sans-serif; /* Body font */
-
-  &:hover {
-    background-color: ${theme.colors.accent};
-  }
-`;

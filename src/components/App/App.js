@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { useState, useEffect } from 'react';
 import { useTheme } from '@emotion/react';
-import { appStyle, appBodyStyle, overlayStyle, loginBoxStyle, headerStyle, loadingBoxStyle} from '../../styles/AppStyles';
+import { appStyle, appBodyStyle, overlayStyle, loginBoxStyle, headerStyle, loadingBoxStyle } from '../../styles/AppStyles';
 import { logoutButtonStyle } from '../../styles/LoginStyles';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
@@ -92,12 +92,12 @@ const App = () => {
           </div>
         </div>
       )}
-      <div css={headerStyle(theme)}>
+      <header css={headerStyle(theme)}>
         <h1>Jammming</h1>
         {isLoggedIn && (
           <button css={logoutButtonStyle(theme)} onClick={handleLogout}>Log out</button>
         )}
-      </div>
+      </header>
       <SearchBar onSearch={handleSearch} />
       <div css={appBodyStyle(theme)}>
         <SearchResults tracks={searchResults} onAdd={addTrackToPlaylist} />

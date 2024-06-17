@@ -40,7 +40,6 @@ const SearchBar = ({ onSearch }) => {
                 value={term}
                 onChange={handleChange}
             />
-            {/* <button css={buttonStyle(theme)} onClick={search}>Search</button> */}
         </div>
     );
 };
