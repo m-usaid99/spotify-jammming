@@ -23,6 +23,12 @@ const theme = {
     medium: '18px',
     large: '24px',
   },
+  scrollbar: {
+    width: '8px',
+    trackColor: '#2d3a6b', // Slate Blue
+    thumbColor: '#1b1f3b', // Dark Blue
+    thumbHoverColor: '#3c91e6', // Vivid Blue
+  }
 };
 
 export default theme;

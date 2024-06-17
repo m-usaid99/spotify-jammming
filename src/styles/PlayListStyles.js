@@ -8,8 +8,27 @@ export const playlistStyle = (theme) => css`
   border-radius: ${theme.borderRadius.medium};
   color: ${theme.colors.textPrimary};
   overflow-y: auto; /* Enable vertical scrolling */
-  max-height: 120vh; /* Limit the height */
+  max-height: 55vh; /* Limit the height */
 
+  @media (min-width: 1024px) { /* Apply custom scrollbar styles only on desktop */
+    &::-webkit-scrollbar {
+      width: var(--scrollbar-width);
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--scrollbar-track-color);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-thumb-color);
+      border-radius: 10px;
+      border: 2px solid var(--scrollbar-track-color);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: var(--scrollbar-thumb-hover-color);
+    }
+  }
 
   @media (max-width: 768px) {
     max-height: 40vh; /* Adjust height for mobile */
