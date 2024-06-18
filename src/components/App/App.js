@@ -9,6 +9,8 @@ import Playlist from '../Playlist/Playlist';
 import Spotify from '../../Spotify';
 import Login from '../Login/Login';
 
+// add README, add try and catch for no playlist name, alert user in case empty playlist name
+
 const App = () => {
   const theme = useTheme();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
