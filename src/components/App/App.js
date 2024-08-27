@@ -103,11 +103,11 @@ const App = () => {
       <SearchBar onSearch={handleSearch} />
       <div css={appBodyStyle(theme)}>
         <SearchResults tracks={searchResults} onAdd={addTrackToPlaylist} />
-        <Playlist 
-          playlistName={playlistName} 
-          playlistTracks={playlistTracks} 
-          onRemove={removeTrackFromPlaylist} 
-          onNameChange={updatePlaylistName} 
+        <Playlist
+          playlistName={playlistName}
+          playlistTracks={playlistTracks}
+          onRemove={removeTrackFromPlaylist}
+          onNameChange={updatePlaylistName}
           onSave={savePlaylist}
         />
       </div>
