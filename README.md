@@ -90,6 +90,13 @@ It utilizes the Spotify API to fetch music data and enables seamless playlist ma
 
 ## Screenshots
 
+This is how the webpage looks. The search happens in real-time using a `useEffect` hook.
+
+![first screenshot](https://i.imgur.com/fqcjyAH.png)
+
+You can add/remove tacks to/from a playlist and then rename the playlist to your liking. Pressing the Save to Spotify button will save the playlist to Spotify.
+![second screenshot](https://i.imgur.com/HxHvur6.png)
+
 ## Deployment
 
 The application is deployed on Vercel. You can access and use the working live version [here](https://spotify-jammming.vercel.app).
